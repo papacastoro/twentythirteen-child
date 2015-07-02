@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+
+/*
+Theme Name: Twenty Thirteen child
+Author: Gigaset
+Description: Mod Twenty Thirteen
+Version: 1.6
+Text Domain: twentythirteen
+*/
+
+@import url("../twentythirteen/style.css");
