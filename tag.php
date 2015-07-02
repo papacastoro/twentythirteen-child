@@ -1,11 +1,8 @@
 <?php
 /**
- * The main template file
+ * The template for displaying Tag pages
  *
- * This is the most generic template file in a WordPress theme and one of the
- * two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * For example, it puts together the home page when no home.php file exists.
+ * Used to display archive-type pages for posts in a tag.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -18,7 +15,15 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
+
 		<?php if ( have_posts() ) : ?>
+			<header class="archive-header">
+				<h1 class="archive-title"><?php printf( __( 'Tag Archives: %s', 'twentythirteen' ), single_tag_title( '', false ) ); ?></h1>
+
+				<?php if ( tag_description() ) : // Show an optional tag description ?>
+				<div class="archive-meta"><?php echo tag_description(); ?></div>
+				<?php endif; ?>
+			</header><!-- .archive-header -->
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>

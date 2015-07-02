@@ -1,11 +1,10 @@
 <?php
 /**
- * The main template file
+ * The template for displaying Post Format pages
  *
- * This is the most generic template file in a WordPress theme and one of the
- * two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * For example, it puts together the home page when no home.php file exists.
+ * Used to display archive-type pages for posts with a post format.
+ * If you'd like to further customize these Post Format views, you may create a
+ * new template file for each specific one.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -18,7 +17,11 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
+
 		<?php if ( have_posts() ) : ?>
+			<header class="archive-header">
+				<h1 class="archive-title"><?php printf( __( '%s Archives', 'twentythirteen' ), '<span>' . esc_html( get_post_format_string( get_post_format() ) ) . '</span>' ); ?></h1>
+			</header><!-- .archive-header -->
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
