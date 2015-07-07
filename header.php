@@ -47,6 +47,13 @@
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'menu_id' 
 							=> 'primary-menu' ) ); ?>
 					<?php get_search_form(); ?>
+					
+					<!-- Richiamo secondo menu -->
+					
+					<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_class' => 'nav-menu', 'menu_id' 
+							=> 'Social' ) ); ?>
+							
+					<?php get_search_form(); ?>
 				</nav><!-- #site-navigation -->
 			</div><!-- #navbar -->
 		</header><!-- #masthead -->

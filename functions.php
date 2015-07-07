@@ -6,7 +6,7 @@ function enqueue_parent_theme_style() {
 
 	if (function_exists('register_sidebar')){
 		register_sidebar( array(
-			'name'          => ('Sidebar2'),
+			'name'          => ('Sidebar Sinistra'),
 			'id'            => 'sidebar2',
 			'description'   => '',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -15,6 +15,9 @@ function enqueue_parent_theme_style() {
 			'after_title'   => '</h3>',
 		));}
 
+		
+		// secondary è dichiarato e serve ad aggiungere un ulteriore area
+		
 		if ( function_exists( 'register_nav_menus' ) ) {
 			register_nav_menus(
 					array(
@@ -22,5 +25,4 @@ function enqueue_parent_theme_style() {
 					)
 			);
 		}
-		register_nav_menu( 'primary', __( 'Navigation Menu', 'twentythirteen' ) );
 ?>
