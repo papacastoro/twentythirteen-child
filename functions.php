@@ -7,7 +7,7 @@ function enqueue_parent_theme_style() {
 	if (function_exists('register_sidebar')){
 		register_sidebar( array(
 			'name'          => ('Sidebar Sinistra'),
-			'id'            => 'sidebar2',
+			'id'            => 'sidebar-3',
 			'description'   => '',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',

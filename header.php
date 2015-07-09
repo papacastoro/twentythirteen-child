@@ -51,9 +51,27 @@
 					<!-- Richiamo secondo menu -->
 					
 					<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_class' => 'nav-menu', 'menu_id' 
-							=> 'Social') ); ?>
+							=> 'Social') );?> 	
+											
+							<div>
 							
-					<?php get_search_form(); ?>
+								<!-- (ul) lista senza bordi -->
+								
+								<ul id="Social" class="nav-menu">
+								
+								<!-- (li) lista -->
+								
+								<li>
+									
+									<a target="_blank" href="http://www.virgilio.it">
+										virgilio
+									</a>
+								</li>
+								
+								</ul>
+							</div>
+									
+					<?phpget_search_form(); ?>
 				</nav><!-- #site-navigation -->
 			</div><!-- #navbar -->
 		</header><!-- #masthead -->
