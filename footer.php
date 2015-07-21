@@ -8,7 +8,7 @@
  */
 ?>
 
-		</div><!-- #main -->
+		
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>
 
@@ -19,7 +19,7 @@
 				<?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?></a>
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
-	</div><!-- #page -->
+	
 
 	<?php wp_footer(); ?>
 </body>

@@ -37,7 +37,7 @@
 				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</a>
-
+	
 			<div id="navbar" class="navbar">
 				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
 					<button class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></button>
@@ -51,20 +51,20 @@
 					<!-- Richiamo secondo menu -->
 					
 					<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_class' => 'nav-menu', 'menu_id' 
-							=> 'Social') );?> 	
+							=> 'Menu secondario') );?> 	
 											
 							<div>
 							
 								<!-- (ul) lista senza bordi -->
 								
-								<ul id="Social" class="nav-menu">
+								<ul class="nav-menu">
 								
 								<!-- (li) lista -->
 								
 								<li>
 									
 									<a target="_blank" href="http://www.virgilio.it">
-										virgilio
+										Virgilio
 									</a>
 								</li>
 								

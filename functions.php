@@ -21,8 +21,62 @@ function enqueue_parent_theme_style() {
 		if ( function_exists( 'register_nav_menus' ) ) {
 			register_nav_menus(
 					array(
-							'secondary' => 'Social',
+							'secondary' => 'Menu secondario',
 					)
 			);
 		}
 ?>
+<?php 
+class MioWidget extends WP_Widget {
+
+	function __construct() {
+		// Instantiate the parent object
+		parent::__construct( false, 'Mio widget' );
+	}
+
+	function widget( $args, $instance ) {
+		// Widget output
+	}
+
+	function update( $new_instance, $old_instance ) {
+		// Save widget options
+	}
+
+	function form( $instance ) {
+		// Output admin widget options form
+	}
+}
+
+function myplugin_register_widgets() {
+	register_widget( 'MioWidget' );
+}
+
+add_action( 'widgets_init', 'myplugin_register_widgets' );?>
+
+<?php 
+class Partner extends WP_Widget {
+
+	function __construct() {
+		// Instantiate the parent object
+		parent::__construct( false, 'Partner' );
+	}
+
+	function widget( $args, $instance ) {
+		// Widget output
+	}
+
+	function update( $new_instance, $old_instance ) {
+		// Save widget options
+	}
+
+	function form( $instance ) {
+		// Output admin widget options form
+	}
+}
+
+function partner_register_widgets() {
+	register_widget( 'Partner' );
+}
+
+
+add_action( 'widgets_init', 'partner_register_widgets' );?>
