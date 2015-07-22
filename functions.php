@@ -62,15 +62,45 @@ class Partner extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		// Widget output
+		extract( $args );
+		$title = apply_filters('widget_title', $instance['title'] );
+		$text = $instance['text'];
+		echo $before_widget;
+	
+	?>
+			                    <div class="textwidget">
+		                        <p><?php echo esc_attr($text); ?></p>
+		                    </div>
+		
+		echo $after_widget;
+		        <?php 
+ 		// Widget output
 	}
 
 	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['text'] = strip_tags($new_instance['text']);
 		// Save widget options
 	}
 
 	function form( $instance ) {
-		// Output admin widget options form
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>">Titolo</label>
+			<input class="widefat"  id="<?php echo $this->get_field_id('title'); ?>" 
+			name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+		</p>
+		
+		 <p>
+                <label for="<?php echo $this->get_field_id('text'); ?>">Inserisci Testo</label>
+                <textarea class="widefat" id="<?php echo $this->get_field_id('text'); ?>" rows="10" cols="10" name="<?php echo $this->get_field_name('text'); ?>">
+                <?php echo esc_attr($instance['text']); ?>
+                </textarea>
+         </p>
+         
+		<!-- Output con titolo e testo modificabile
+		<?php 
 	}
 }
 
