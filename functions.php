@@ -42,8 +42,41 @@ class miowidget extends WP_Widget {
             if ( ! empty( $instance['title'] ) ) {
                 echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
             }
-            echo __( 'Funzionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-        echo $args['after_widget'];
+            echo __( 'Funzionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');?>
+            
+            <!-- Inserimento form per inserimento immagine -->
+            
+            <form id="featured_upload" method="post" action="#" enctype="multipart/form-data">
+				<input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
+					<input type="hidden" name="post_id" id="post_id" value="55" />
+						<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
+					<input id="submit_my_image_upload" name="submit_my_image_upload" type="submit" value="Invia" />
+			
+						<?php if ( ! function_exists( 'wp_handle_upload' ) ) {
+    							require_once( ABSPATH . 'wp-admin/includes/file.php' );
+								}
+
+								$uploadedfile = $_FILES['file'];
+
+								$upload_overrides = array( 'test_form' => false );
+
+								$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+
+								if ( $movefile && !isset( $movefile['error'] ) ) {
+    							echo "Upload riuscito.\n";
+    							var_dump( $movefile);
+								} 
+								else {
+							    /**
+							     * errore generato da _wp_handle_upload()
+							     * @see _wp_handle_upload() in wp-admin/includes/file.php
+							     */
+							    echo $movefile['error'];
+										}
+						?>
+			</form>
+          
+       <?php  echo $args['after_widget'];
         // Widget output
     }
     function update( $new_instance, $old_instance ) {
