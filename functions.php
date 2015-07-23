@@ -27,86 +27,46 @@ function enqueue_parent_theme_style() {
 		}
 ?>
 <?php 
-class MioWidget extends WP_Widget {
-
-	function __construct() {
-		// Instantiate the parent object
-		parent::__construct( false, 'Mio widget' );
-	}
-
-	function widget( $args, $instance ) {
-		// Widget output
-	}
-
-	function update( $new_instance, $old_instance ) {
-		// Save widget options
-	}
-
-	function form( $instance ) {
-		// Output admin widget options form
-	}
+class miowidget extends WP_Widget {
+    function __construct() {
+        // Instantiate the parent object
+        parent::__construct(
+                'miowidget', // Base ID
+            __( 'Mio Widget', 'text_domain' ), // Name
+            array( 'description' => __( 'miowidget', 'text_domain' ), ) 
+// Args
+        );
+    }
+    function widget( $args, $instance ) {
+        echo $args['before_widget'];
+            if ( ! empty( $instance['title'] ) ) {
+                echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+            }
+            echo __( 'Funzionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        echo $args['after_widget'];
+        // Widget output
+    }
+    function update( $new_instance, $old_instance ) {
+        $instance = array();
+            $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        return $instance;
+        // Save widget options
+    }
+    function form( $instance ) {
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Titolo', 'text_domain' );
+        ?>
+                <p>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+                <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>
+                     " name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" 
+                          value="<?php echo esc_attr( $title ); ?>">
+                </p>
+                <?php 
+        // Output admin widget options form
+    }
 }
-
 function myplugin_register_widgets() {
-	register_widget( 'MioWidget' );
+    register_widget( 'miowidget' );
 }
-
 add_action( 'widgets_init', 'myplugin_register_widgets' );?>
 
-<?php 
-class Partner extends WP_Widget {
-
-	function __construct() {
-		// Instantiate the parent object
-		parent::__construct( false, 'Partner' );
-	}
-
-	function widget( $args, $instance ) {
-		extract( $args );
-		$title = apply_filters('widget_title', $instance['title'] );
-		$text = $instance['text'];
-		echo $before_widget;
-	
-	?>
-			                    <div class="textwidget">
-		                        <p><?php echo esc_attr($text); ?></p>
-		                    </div>
-		
-		echo $after_widget;
-		        <?php 
- 		// Widget output
-	}
-
-	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['text'] = strip_tags($new_instance['text']);
-		// Save widget options
-	}
-
-	function form( $instance ) {
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>">Titolo</label>
-			<input class="widefat"  id="<?php echo $this->get_field_id('title'); ?>" 
-			name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
-		</p>
-		
-		 <p>
-                <label for="<?php echo $this->get_field_id('text'); ?>">Inserisci Testo</label>
-                <textarea class="widefat" id="<?php echo $this->get_field_id('text'); ?>" rows="10" cols="10" name="<?php echo $this->get_field_name('text'); ?>">
-                <?php echo esc_attr($instance['text']); ?>
-                </textarea>
-         </p>
-         
-		<!-- Output con titolo e testo modificabile
-		<?php 
-	}
-}
-
-function partner_register_widgets() {
-	register_widget( 'Partner' );
-}
-
-
-add_action( 'widgets_init', 'partner_register_widgets' );?>
