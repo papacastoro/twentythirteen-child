@@ -49,7 +49,7 @@ class miowidget extends WP_Widget {
             <form id="featured_upload" method="post" action="#" enctype="multipart/form-data">
 				<input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
 					<input type="hidden" name="post_id" id="post_id" value="55" />
-						<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
+					<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
 					<input id="submit_my_image_upload" name="submit_my_image_upload" type="submit" value="Invia" />
 			
 						<?php if ( ! function_exists( 'wp_handle_upload' ) ) {
@@ -62,17 +62,18 @@ class miowidget extends WP_Widget {
 
 								$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
 
-								if ( $movefile && !isset( $movefile['error'] ) ) {
-    							echo "Upload riuscito.\n";
-    							var_dump( $movefile);
+								if ( $movefile && !isset($movefile['error']) ) {
+									echo("vvv");
+									echo "Upload riuscito.\n";
+    								var_dump( $movefile);
 								} 
 								else {
-							    /**
-							     * errore generato da _wp_handle_upload()
-							     * @see _wp_handle_upload() in wp-admin/includes/file.php
-							     */
-							    echo $movefile['error'];
-										}
+									/**
+									 * errore generato da _wp_handle_upload()
+									 * @see _wp_handle_upload() in wp-admin/includes/file.php
+									 */
+									echo $movefile['error'];
+								}
 						?>
 			</form>
           
