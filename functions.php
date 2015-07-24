@@ -63,7 +63,6 @@ class miowidget extends WP_Widget {
 								$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
 
 								if ( $movefile && !isset($movefile['error']) ) {
-									echo("vvv");
 									echo "Upload riuscito.\n";
     								var_dump( $movefile);
 								} 
