@@ -45,31 +45,13 @@
 							'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?>
 					</a>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'menu_id' 
-							=> 'primary-menu' ) ); ?>
+							=> 'Menu primario' ) ); ?>
 					<?php get_search_form(); ?>
 					
 					<!-- Richiamo secondo menu -->
 					
-					<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_class' => 'nav-menu', 'menu_id' 
-							=> 'Menu secondario') );?> 	
-											
-							<div>
-							
-								<!-- (ul) lista senza bordi -->
-								
-								<ul class="nav-menu">
-								
-								<!-- (li) lista -->
-								
-								<li>
-									
-									<a target="_blank" href="http://www.virgilio.it">
-										Virgilio
-									</a>
-								</li>
-								
-								</ul>
-							</div>
+					<?php  wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_class' => 'nav-menu', 'menu_id' 
+							=> 'Menu secondario'));?> 	
 									
 					<?phpget_search_form(); ?>
 				</nav><!-- #site-navigation -->
