@@ -11,3 +11,4 @@ if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
 		</div><!-- .sidebar-inner -->
 	</div><!-- #tertiary -->
 <?php endif; ?>
+

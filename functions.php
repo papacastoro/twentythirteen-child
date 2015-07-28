@@ -41,52 +41,39 @@ class miowidget extends WP_Widget {
         echo $args['before_widget'];
             if ( ! empty( $instance['title'] ) ) {
                 echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-            }
-            echo __( 'Funzionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');?>
+            }?>
             
             <!-- Inserimento form per inserimento immagine -->
-
 
             <form id="featured_upload" method="post" action="#" enctype="multipart/form-data">
 				<input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
 					<input type="hidden" name="post_id" id="post_id" value="55" />
-<<<<<<< HEAD
-					<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' );?>
+
+                        </br>
+                        </br>
+
+                <textarea class="widefat" rows="12" cols="30" id="widget-text" name="widget-text[text]"> </textarea></br></br>
 
 				<input id="submit_my_image_upload" name="submit_my_image_upload" type="submit" value="Invia" />
 
-=======
-					<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
-					<input class="upload_image_button" type="button" value="Invia" />
-					
-					
-			
->>>>>>> origin/master
-						<?php if ( ! function_exists( 'wp_handle_upload' ) ) {
-    							require_once( ABSPATH . 'wp-admin/includes/file.php' );
-								}
+            </form>
 
-								$uploadedfile = $_FILES['file'];
+        <?
+            $cartella = 'upload/';
+            $percorso = $_FILES['miofile']['tmp_name'];
+            $nome = $_FILES['miofile']['name'];
+            // ESEGUO L'UPLOAD CONTROLLANDO L'ESITO
+            if (move_uploaded_file($percorso, $cartella . $nome))
+            {
+                print "Upload eseguito con successo";
+            }
+            else
+            {
+                print "Si sono verificati dei problemi durante l'Upload";
+            }
+        ?>
 
-								$upload_overrides = array( 'test_form' => false );
-
-								$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-
-								if ( $movefile && !isset($movefile['error']) ) {
-									echo "Upload riuscito.\n";
-    								var_dump( $movefile);
-								}
-								else {
-									/**
-									 * errore generato da _wp_handle_upload()
-									 * @see _wp_handle_upload() in wp-admin/includes/file.php
-									 */
-									echo $movefile['error'];
-								}
-						?>
-			</form>
-          
-       <?php  echo $args['after_widget'];
+        <?php  echo $args['after_widget'];
         // Widget output
     }
     function update( $new_instance, $old_instance ) {
@@ -99,12 +86,12 @@ class miowidget extends WP_Widget {
         $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Titolo', 'text_domain' );
         ?>
                 <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>
-                     " name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" 
+                     " name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"
                           value="<?php echo esc_attr( $title ); ?>">
                 </p>
-                <?php 
+                <?php
         // Output admin widget options form
     }
 }
